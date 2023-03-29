@@ -17,16 +17,16 @@ const connection = mysql.createConnection({
   port: '3306',
   user: 'root',
   password: 'notSecureChangeMe',
-  database: 'MyDataBase',
+  database: 'MyDataBase'
 });
 
 
 // affiche index page
 app.get('/', (req, res) => {
-  connection.query('select * from products', (err, result, fields) => 
+  connection.query('SELECT * FROM `product`', (err, result, fields) => 
   {
     console.log(result)
-    res.render('pages/index')
+    res.render('pages/index', {products: result})
   })
     
     })
@@ -36,6 +36,15 @@ app.get('/connexion', (req, res) => {
   res.render('pages/connexion+inscription/connexion')
   }
 )
+
+app.post('/connexion', (req, res) => {
+  connection.query('INSERT INTO `users`' ), (err, result, fields) =>
+  {
+    
+    req.send('pages/connexion+inscription/connexion')
+  }
+  
+})
 
 //page inscription
 app.get('/inscription', (req, res) => {
