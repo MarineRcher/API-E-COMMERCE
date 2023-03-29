@@ -1,0 +1,185 @@
+.titleAcceuilCat {
+   margin:2vh;
+   font-size: 2rem;
+    
+}
+
+.imgAcceuilCat {
+    width: 80%;
+    margin:2vh
+}
+
+.acceuilCat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Croquettes */
+
+.ProductsCroquettesCat {
+    margin-top: 10vh;
+    margin-left: 5vh;
+    border-bottom: 3px solid black;
+    }
+    
+    .boxsProductsCroquettesCat{
+        display: flex;
+    flex-direction: row;
+    align-items: center;
+    }
+
+
+    
+    .boxProductsCroquettesCat {
+        border: 0.1rem;
+        border-radius: 40px;
+        height: 100%;
+        width: 100%;
+        padding: 8vh;
+        margin: 2vh;
+        background-color: #FFFFFF;
+       
+        font-size: 2rem;
+        padding: 2vh;
+    }
+    
+    .croquettes {
+        height: 15vh;
+    }
+    
+
+    /* paté */ 
+
+
+.ProductsPateCat {
+    margin-top: 10vh;
+    margin-left: 5vh;
+    border-bottom: 3px solid black;
+    }
+    
+    .boxsProductsPateCat{
+        display: flex;
+    flex-direction: row;
+    align-items: center;
+    }
+
+
+    
+    .boxProductsPateCat {
+        border: 0.1rem;
+        border-radius: 40px;
+        height: 100%;
+        width: 100%;
+        padding: 8vh;
+        margin: 2vh;
+        background-color: #FFFFFF;
+   
+        font-size: 2rem;
+        padding: 2vh;
+    }
+    
+    .pate{
+        height: 15vh;
+    }
+    
+/* friandises */
+
+.ProductsFriandiseCat {
+    margin-top: 10vh;
+    margin-left: 5vh;
+    border-bottom: 3px solid black;
+    }
+    
+    .boxsProductsFriandiseCat{
+        display: flex;
+    flex-direction: row;
+    align-items: center;
+    }
+
+
+    
+    .boxProductsFriandiseCat {
+        border: 0.1rem;
+        border-radius: 40px;
+        height: 100%;
+        width: 100%;
+        padding: 8vh;
+        margin: 2vh;
+        background-color: #FFFFFF;
+       
+        font-size: 2rem;
+        padding: 2vh;
+    }
+    
+    .friandise{
+        height: 15vh;
+    }
+
+    /* litiere */
+
+
+.ProductsLitiereCat {
+    margin-top: 10vh;
+    margin-left: 5vh;
+    border-bottom: 3px solid black;
+    }
+    
+    .boxsProductsLitiereCat{
+        display: flex;
+    flex-direction: row;
+    align-items: center;
+    }
+
+
+    
+    .boxProductsLitiereCat {
+        border: 0.1rem;
+        border-radius: 40px;
+        height: 100%;
+        width: 100%;
+        padding: 8vh;
+        margin: 2vh;
+        background-color: #FFFFFF;
+      
+        font-size: 2rem;
+        padding: 2vh;
+    }
+    
+    .litiere{
+        height: 15vh;
+    }
+
+    /* jeu */
+
+
+.ProductsJeuCat {
+    margin-top: 10vh;
+    margin-left: 5vh;
+    border-bottom: 3px solid black;
+    }
+    
+    .boxsProductsJeuCat{
+        display: flex;
+    flex-direction: row;
+    align-items: center;
+    }
+
+
+    
+    .boxProductsJeuCat {
+        border: 0.1rem;
+        border-radius: 40px;
+        height: 100%;
+        width: 100%;
+        padding: 8vh;
+        margin: 2vh;
+        background-color: #FFFFFF;
+      
+        font-size: 2rem;
+        padding: 2vh;
+    }
+    
+    .jeu{
+        height: 15vh;
+    }

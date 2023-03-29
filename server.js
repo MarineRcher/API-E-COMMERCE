@@ -18,7 +18,11 @@ app.get('/', (req, res) => {
     }
 )
 
-
+//affiche page acceuil chat
+app.get('/chat', (req, res) => {
+  res.render('pages/chat/chat')
+  }
+)
 
 
 

@@ -1,0 +1,175 @@
+body {
+    background-color: #374158;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+/* haut de page */
+
+header {
+    display: flex;
+    flex-direction: row;
+    background-color: #D9D9D9;
+   
+}
+
+.title {
+    padding-top: 9vh;
+    color: #D76C58;
+    width: 70%;
+}
+
+.connexion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 9vh;
+    width: 17vh;
+    height: 3vh;
+    border: solid 1px whitesmoke;
+    border-radius: 25px;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px ;
+}
+
+/* navbar */
+
+nav {
+    background-color: #D9D9D9;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    padding: 10px 0px;
+}
+
+a:hover {
+    color: #D76C58;
+    border-bottom: 2px solid #D76C58;
+}
+
+li{
+    list-style: none;
+   padding-left: 9%;
+    padding-right: 9%;
+    padding-top: 2vh;
+    padding-bottom: 2vh; 
+    width: 25%;
+    text-align: center;
+    
+}
+
+ul::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.sous {
+    display: none;
+    background-color: white;
+    box-shadow: 0px 1px 2px;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+
+}
+
+li:hover .sous{
+    display: block;
+}
+
+.sous li {
+    width: 100%;
+    text-align: left;
+}
+
+.sous a {
+    padding: 10px;
+    float: none;
+}
+
+/* Form inscription */
+#container{
+    width:400px;
+    margin:0 auto;
+    margin-top:10%;
+    display: flex;
+    justify-content: center;
+   }
+   /* Bordered form */
+   form {
+   
+    width:50%;
+    padding: 30px;
+    margin-top: 8vh;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+   }
+   #container h1{
+    width: 40%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+   }
+   
+   /* Full-width inputs */
+   input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+   }
+   
+   /* Set a style for all buttons */
+   input[type=submit] {
+    background-color: #222D41;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+
+   }
+   input[type=submit]:hover {
+    background-color: white;
+    color: #222D41;
+    border: 1px solid #222D41;
+   }
+
+   .formu {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10vh;
+   }
+
+
+
+/* footer */
+footer {
+    display: flex;
+   
+    justify-content: flex-end;
+    background-color: #222D41;
+}
+
+.foot {
+    margin: 2vh;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
