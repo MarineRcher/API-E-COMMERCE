@@ -1,11 +1,14 @@
 import express from 'express';
 import mysql from 'mysql2'
 import bodyParser from 'body-parser';
-const app = express() 
+const app = express()
 const port = 3000
 
+app.use(bodyParser.urlencoded({extended:true}));
+
 app.use(express.static('public'));
-app.set('view engine' , 'ejs')
+
+app.set('view engine', 'ejs')
 
 
 app.listen(port, () => {
@@ -23,45 +26,68 @@ const connection = mysql.createConnection({
 
 // affiche index page
 app.get('/', (req, res) => {
-  connection.query('SELECT * FROM `product`', (err, result, fields) => 
-  {
+  connection.query('SELECT * FROM `product`', (err, result, fields) => {
     console.log(result)
-    res.render('pages/index', {products: result})
+    res.render('pages/index', { products: result })
   })
-    
-    })
+
+})
 
 //page connexion
 app.get('/connexion', (req, res) => {
   res.render('pages/connexion+inscription/connexion')
-  }
+}
 )
 
-app.post('/connexion', (req, res) => {
-  connection.query('INSERT INTO `users`' ), (err, result, fields) =>
-  {
-    
-    req.send('pages/connexion+inscription/connexion')
-  }
-  
+app.post('/inscription', (req, res) => {
+  console.log(req.body)
+  const mail = req.body.mail
+  const username = req.body.username
+  const password = req.body.password[0]
+  /**
+   * INSERT INTO `product`
+   * (`name`, `price`, `description`, `opinion`, `categorie`, `image`, `id`) 
+   * VALUES 
+   * ('?,'[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]')
+   */
+  // depuis req.body on recupere les donnees qu'on\
+  // souhaite inserer en base
+
+  // tester la requete sur phpmyadmin 
+
+  // remplacer les valeurs par des ?
+
+  // et placer dans le tableau du preppared statement les valeurs 
+  // qui correspondent respectivement aux ?
+
+  connection.execute('INSERT INTO users(id, mail, userame, password) VALUES (NULL,?,?,?)', [mail, username, password], (err, rows) => {
+    // rows: [ { result: 12 } ]
+  console.log('SQL errors', err)
+    console.log(rows)
+    res.send('Yesss')
+    // internally 'select 1 + ? + ? as result' is prepared first. On subsequent calls cached statement is re-used
+  });
+
+  // close cached statement for 'select 1 + ? + ? as result'. noop if not in cache
+  connection.unprepare('INSERT INTO users(id, mail, userame, password) VALUES (NULL,?,?,?)');
 })
 
 //page inscription
 app.get('/inscription', (req, res) => {
   res.render('pages/connexion+inscription/inscription')
-  }
+}
 )
 
 //affiche page acceuil chat
 app.get('/chat', (req, res) => {
   res.render('pages/chat/chat')
-  }
+}
 )
 
 //page croquettes chats
 app.get('/chat/croquettes', (req, res) => {
   res.render('pages/chat/croquettesCat')
-  }
+}
 )
 
 
