@@ -59,11 +59,11 @@
   </div>
 
   <div class="boxNewProducts">
-    <% for (var i=0; i < products.length; i++) { %>
+    <% for (var i=0; i < product.length; i++) { %>
       <div class="newProduct1">
-        <img class="croquettes" src="<%= products[i].image %>">
-        <%= products[i].name %>
-          <%= products[i].price %>
+        <img class="croquettes" src="<%= product[i].image %>">
+        <%= product[i].name %>
+          <%= product[i].price %>
       </div>
   
         <% } %>

@@ -28,7 +28,7 @@ const connection = mysql.createConnection({
 app.get('/', (req, res) => {
   connection.query('SELECT * FROM `product`', (err, result, fields) => {
     console.log(result)
-    res.render('pages/index', { products: result })
+    res.render('pages/index', { product: result })
   })
 
 })
@@ -64,7 +64,12 @@ app.post('/inscription', (req, res) => {
     // rows: [ { result: 12 } ]
   console.log('SQL errors', err)
     console.log(rows)
-    res.send('Yesss')
+
+    connection.query('SELECT * FROM `product`', (err, result, fields) => {
+      console.log(result)
+      res.render('pages/index', { product: result })
+    })
+  
     // internally 'select 1 + ? + ? as result' is prepared first. On subsequent calls cached statement is re-used
   });
 
