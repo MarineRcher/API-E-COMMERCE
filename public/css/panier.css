@@ -1,3 +1,26 @@
 .titlePanier{
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: center;
+    margin: 2vh;
+}
+
+.boxPanier {
+    border: 0.1rem;
+    border-radius: 10px;
+    height: 25%;
+    width: 85%;
+    padding: 5vh;
+    margin: 0.5vh;
+   opacity: 0.8;
+    background-color: #FFFFFF;
+    font-size: 2rem;
     
+}
+.boxsPanier{
+    display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
 }
