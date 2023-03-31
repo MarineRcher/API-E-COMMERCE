@@ -83,6 +83,15 @@ app.get('/inscription', (req, res) => {
 }
 )
 
+//page panier
+app.get('/panier', (req, res) => {
+  connection.query('SELECT * FROM `orders`', (err, result, fields) => {
+    console.log(result)
+    res.render('pages/panier', { orders: result })
+  })
+
+})
+
 //affiche page acceuil chat
 app.get('/chat', (req, res) => {
   res.render('pages/chat/chat')
