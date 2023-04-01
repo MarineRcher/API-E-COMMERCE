@@ -3,24 +3,27 @@
     display: flex;
     justify-content: center;
     margin: 2vh;
+
 }
 
 .boxPanier {
-    border: 0.1rem;
-    border-radius: 10px;
-    height: 25%;
-    width: 85%;
+    border-bottom: 0.4px solid #C0C0C0 ;
     padding: 5vh;
-    margin: 0.5vh;
    opacity: 0.8;
+   width: 70%;
     background-color: #FFFFFF;
     font-size: 2rem;
-    
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 .boxsPanier{
-    display: flex;
-flex-direction: column;
-align-items: center;
+opacity: 0.8;
+background-color: #FFFFFF;
+font-size: 2rem;
+height: 25%;
+width: 85%;
 justify-content: center;
-
+    display: flex;
+    flex-direction: column;
 }
