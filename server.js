@@ -33,6 +33,22 @@ app.get('/', (req, res) => {
 
 })
 
+app.post('/', (req, res) => {
+  console.log(req.body)
+  const name = req.body.name
+  const price = req.body.price
+  connection.execute('INSERT INTO orders(id, user_id, name, price, order_date) VALUES (NULL, ?, ?, ?, ?, ?)', [user_id, name, price, order_date], (err, rows) => {
+    console.log('SQL errors', err)
+    console.log(rows)
+
+    connection.query('SELECT * FROM `orders`', (err, result, fields) => {
+      console.log(result)
+      res.render('pages/panier', { orders: result })
+    })
+  });
+  connection.unprepare('INSERT INTO orders(id, user_id, name, price, order_date) VALUES (NULL, ?, ?, ?, ?, ?)');
+})
+
 //page connexion
 app.get('/connexion', (req, res) => {
   res.render('pages/connexion+inscription/connexion')
@@ -94,15 +110,11 @@ app.get('/panier', (req, res) => {
 
 //affiche page acceuil chat
 app.get('/chat', (req, res) => {
-  res.render('pages/chat/chat')
+  res.render('pages/chat')
 }
 )
 
-//page croquettes chats
-app.get('/chat/croquettes', (req, res) => {
-  res.render('pages/chat/croquettesCat')
-}
-)
+
 
 
 

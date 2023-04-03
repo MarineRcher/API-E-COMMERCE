@@ -11,44 +11,20 @@
   <header>
     <%- include('../partials/header'); %>
   </header>
-
   <nav class="menu">
     <ul>
       <li class="lien"><a href="/chat"><strong>Chat</strong></a>
-        <ul class="sous">
-
-
-          <li> <a href='/chat/croquettes'>Croquettes</a></li>
-          <li> <a href="pateCat.html">Paté</a></li>
-          <li> <a href="friandiseCat.html">Friandises</a></li>
-          <li> <a href="litiere.html">Litière</a></li>
-          <li> <a href="jeuxCat.html">Jeux</a></li>
-          <li> <a href="autresCat.html">Autres</a></li>
-        </ul>
       </li>
       <li class="lien"><a href="#"><strong>Chiens</strong></a>
-        <ul class="sous">
-
-
-          <li> <a href="#">Croquettes</a></li>
-          <li> <a href="#">Friandises</a></li>
-          <li> <a href="#">Jeux</a></li>
-          <li> <a href="#">Autres</a></li>
-        </ul>
+       
       </li>
       <li class="lien"><a href="#"><strong>Autres</strong></a>
-        <ul class="sous">
-
-
-          <li> <a href="#">Lapins</a></li>
-          <li> <a href="#">Poissons</a></li>
-          <li> <a href="#">Hamster</a></li>
-
-        </ul>
+     
       </li>
       <li class="lien"><a href="#"><strong>Bons Plans</strong></a></li>
     </ul>
   </nav>
+
 
   <div class="photo">
     <img class="imageAcceuilChienChat" src="../img/acceuil/acceuilChien&Chat.jpg" alt="lala">
@@ -62,8 +38,11 @@
     <% for (var i=0; i < product.length; i++) { %>
       <div class="newProduct1">
         <img class="croquettes" src="<%= product[i].image %>">
-        <%= product[i].name %>
-          <%= product[i].price %>
+        <div name="name">   <%= product[i].name %> </div>
+     
+        <div name="price" > <%= product[i].price %> </div> 
+          <button type="addPanier" name='add' value='Panier' >Ajouter
+          </button>
       </div>
   
         <% } %>
