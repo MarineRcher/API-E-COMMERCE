@@ -37,7 +37,7 @@ app.post('/', (req, res) => {
   console.log(req.body)
   const name = req.body.name
   const price = req.body.price
-  connection.execute('INSERT INTO orders(id, user_id, name, price, order_date) VALUES (NULL, ?, ?, ?, ?, ?)', [user_id, name, price, order_date], (err, rows) => {
+  connection.execute('INSERT into orders (name, price) select name, price FROM product;', [name, price], (err, rows) => {
     console.log('SQL errors', err)
     console.log(rows)
 
@@ -46,7 +46,7 @@ app.post('/', (req, res) => {
       res.render('pages/panier', { orders: result })
     })
   });
-  connection.unprepare('INSERT INTO orders(id, user_id, name, price, order_date) VALUES (NULL, ?, ?, ?, ?, ?)');
+  connection.unprepare('INSERT into orders (name, price) select name, price FROM product;');
 })
 
 //page connexion
