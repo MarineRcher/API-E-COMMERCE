@@ -33,19 +33,20 @@
   <div class="newProducts">
     <h1>Nouveaux Produits : </h1>
   </div>
-
+  <form action="/" method="POST">
   <div class="boxNewProducts">
     <% for (var i=0; i < product.length; i++) { %>
       <div class="newProduct1">
         <img class="croquettes" src="<%= product[i].image %>">
-        <div name="name">   <%= product[i].name %> </div>
-     
-        <div name="price" > <%= product[i].price %> </div> 
-        <% } %>
-
-        <button type="addPanier" name='add' value='Panier' >Ajouter
-        </button>
-    </div>
+        <a href="/produits">
+          <label name="name" required value="<%= product[i].name %>"><%= product[i].name %>  </a> </label>
+          
+       <label name="price" required value="<%= product[i].price %>"><%= product[i].price %>  </label>
+        
+        <input type="submit" id='submit' value='Ajouter' >
+      </div>
+    <% } %> 
+  </form>
   </div>
 
 

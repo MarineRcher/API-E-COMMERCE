@@ -37,16 +37,20 @@ app.post('/', (req, res) => {
   console.log(req.body)
   const name = req.body.name
   const price = req.body.price
-  connection.execute('INSERT into orders (name, price) select name, price FROM product;', [name, price], (err, rows) => {
-    console.log('SQL errors', err)
+  connection.execute('INSERT INTO orders (name, price) SELECT (name=?, price=?)', [name, price], (err, rows) => {
+
+  console.log('SQL errors', err)
     console.log(rows)
 
-    connection.query('SELECT * FROM `orders`', (err, result, fields) => {
+    connection.query('SELECT * FROM `product`', (err, result, fields) => {
       console.log(result)
-      res.render('pages/panier', { orders: result })
+      res.render('pages/index', { product: result })
     })
+  
+   
   });
-  connection.unprepare('INSERT into orders (name, price) select name, price FROM product;');
+
+ 
 })
 
 //page connexion
@@ -114,7 +118,13 @@ app.get('/chat', (req, res) => {
 }
 )
 
+app.get('/produits', (req, res) => {
+  connection.query('SELECT * FROM `product`', (err, result, fields) => {
+    console.log(result)
+    res.render('pages/ficheProduit', { product: result })
+  })
 
+})
 
 
 

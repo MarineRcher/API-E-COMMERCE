@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+  <nav class="menu">
+    <ul>
+        <li class="lien"><a href="/"><strong>Acceuil</strong>  </a></li>
+      <li class="lien"><a href="/chat"><strong>Chat</strong></a>
+      </li>
+      <li class="lien"><a href="#"><strong>Chiens</strong></a>
+       
+      </li>
+      <li class="lien"><a href="#"><strong>Autres</strong></a>
+     
+      </li>
+      <li class="lien"><a href="#"><strong>Bons Plans</strong></a></li>
+    </ul>
+  </nav>
+
+<!-- fiche product-->
+<div class="ficheProduit">
+    <% for (var i=0; i < product.length; i++) { %>
+<div class="contientImage">
+    <img class="imgProduit" src="<%= product[i].image %>">
+</div>
+
+<div class="descriptionProduit">
+
+<div class="titreProduit">
+    <h1><%= product[i].name %> </h1>
+</div>
+
+<div class="prixProduit">
+    <p> <%= product[i].price %></p>
+</div>
+<% } %> 
+</div>
+</div>
+
+<div class="newProducts">
+    <h1>Autres Produits : </h1>
+  </div>
+
+<div class="boxNewProducts">
+    <% for (var i=0; i < product.length; i++) { %>
+      <div class="newProduct1">
+        <img class="croquettes" src="<%= product[i].image %>"></br>
+        <a href="/products"><%= product[i].name %> </a> </br>
+        <%= product[i].price %> </br> 
+        <button type="addPanier" name='add' value='Panier' >Ajouter</button>
+      </div>
+    <% } %> 
+  </div>
+
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>
