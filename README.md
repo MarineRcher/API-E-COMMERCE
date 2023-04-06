@@ -1,45 +1,73 @@
-# Express EJS template
+# site E-commerce de produits pour animaux
 
-a npm package which generates starter code for [Express](http://expressjs.com/) and [EJS](https://ejs.co/)
-docs : https://express-ejs-docs.vercel.app/
+Il s'agit d'un site e-commerce avec son application directement intégré avec l'API
 
-If you like this package please give us a ⭐ on github [https://github.com/aadityasivaS/express-ejs](https://github.com/aadityasivaS/express-ejs)
+# Langages utilisés
 
-## Getting Started
+FRONT-END :
+- HTML
+- CSS
 
-To get started follow the instruction below
+BACK-END :
+- EJS : Va permettre d'intégrer du js dans du HTML
+- JS
+- Express
+- SQL
+# environnement
 
-### Installing
+Logiciels à installer :
+- VScode (de préférence)
+- Docker
+- node JS
 
-To install run
+
+Installer nodemon:
+```
+npm i nodemon
+```
+
+Pour démarrer on installe express-ejs :
 
 ```
 npm i -g express-ejs
 ```
 
-### Usage
-
-To start run
+On installe body-parser :
 ```
-express-ejs your-project-name
+npm i body-parser
 ```
 
-This will clone all the files and install all packages
-
-To start the server run
+On installe mysql2 :
 
 ```
-npm start
+npm i mysql2
 ```
 
-This will start the server at port 3000
+Dans un terminal on compile notre fichier docker, qui va nous permettre d'accéder à la base de donné avec :
+
+```
+docker -f compose docker-compose.yaml up
+```
+
+On peut ajouter la base de donnée (fichier .sql) dans le projet en l'important sur :
+
+localhost:8080
+
+# Le projet peut être lancé
+
+Lancer 
+```
+npm run server
+```
+
+On peut accéder au projet à l'addresse : localhost:3000
+
+# Base de donnée 
+
+Contient 3 tables :
+- users
+- product
+- orders
 
 
-## Contributing
-
-Feel free to submit pull requests
-
-## Author
-
-* **Aadityasiva** - *All work* - [aadityasivaS](https://github.com/aadityasivaS)
 

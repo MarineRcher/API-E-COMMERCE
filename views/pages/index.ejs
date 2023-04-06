@@ -40,15 +40,18 @@
         <img class="croquettes" src="<%= product[i].image %>">
         <a href="/produits">
           <label name="name" required value="<%= product[i].name %>"><%= product[i].name %>  </a> </label>
+
+          <label name="price" required value="<%= product[i].price %>"><%= product[i].price %>  </label>
+
+          <input type="hidden" id="productName<%= i %>" name="productName" value="<%= product[i].name %>">
+          <input type="hidden" id="productPrice<%= i %>" name="productPrice" value="<%= product[i].price %>">
+          <input type="hidden" id="numProduct" name="numProduct" value="<%= i %>">
           
-       <label name="price" required value="<%= product[i].price %>"><%= product[i].price %>  </label>
-        
         <input type="submit" id='submit' value='Ajouter' >
       </div>
-    <% } %> 
+    <% } %>
   </form>
   </div>
-
 
 
 

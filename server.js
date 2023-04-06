@@ -34,10 +34,16 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  console.log(req.body)
-  const name = req.body.name
-  const price = req.body.price
-  connection.execute('INSERT INTO orders (name, price) SELECT (name=?, price=?)', [name, price], (err, rows) => {
+  console.log("requete post")
+  console.log(req.body.numProduct)
+  const num = req.body.numProduct
+  const name = req.body.productName
+  const price = req.body.productPrice
+
+  console.log(name)
+  console.log(price)
+  console.log(num)
+  connection.execute('INSERT INTO orders (name, price) VALUES (name=?, price=?)', [name, price], (err, rows) => {
 
   console.log('SQL errors', err)
     console.log(rows)
