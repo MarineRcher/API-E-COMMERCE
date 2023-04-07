@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 const app = express()
 const port = 3000
 
+// paramètres cookie express session
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
   secret: 'cat',
@@ -20,11 +21,12 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs')
 
-
+//site sur le port 3000
 app.listen(port, () => {
   console.log(`app listening on port ${port}`)
 })
 
+//lien vers la base de donnée
 const connection = mysql.createConnection({
   host: '',
   port: '3306',
@@ -124,6 +126,7 @@ app.get('/chat', (req, res) => {
 }
 )
 
+//affiche la page produit
 app.get('/produits', (req, res) => {
   connection.query('SELECT * FROM `product`', (err, result, fields) => {
     console.log(result)

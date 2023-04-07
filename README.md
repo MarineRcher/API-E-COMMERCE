@@ -42,6 +42,11 @@ Pour démarrer on installe express-ejs :
 npm i -g express-ejs
 ```
 
+installer express-session :
+```
+npm install express-session
+```
+
 On installe body-parser :
 ```
 npm i body-parser
