@@ -29,13 +29,16 @@
 <div class="titlePanier">
   <h1>Votre panier</h1>
 </div>
+<% for (var i=0; i < orders.length; i++) { %>
 <div class="boxsPanier">
 
   <div class="boxPanier">
+    
+ <h1> <%= orders[i].name %></h1>  
+ <h1>   <%= orders[i].price %>euros</h1>
   </div>
 
-  <div class="boxPanier">
-  </div>
+  <% } %>
 </div>
 
 </div>

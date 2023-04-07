@@ -86,6 +86,7 @@ Contient 3 tables :
 
 # Fonctionnalitées :
 - Possibilité de s'inscrire
+- Ajouter au panier
 
 
 

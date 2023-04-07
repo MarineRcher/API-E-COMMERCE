@@ -35,18 +35,31 @@
         <% for (var i=0; i < product.length; i++) { %>
           <div class="newProduct1">
             <img class="croquettes" src="<%= product[i].image %>">
-            <a href="/produits">
+         
               <label for="name<%= i %>" required><%= product[i].name %></label>
-              <input type="hidden" id="productName<%= i %>" name="productName" value="<%= product[i].name %>">
-            </a>
+              <input type="hidden" id="productName<%= i %>" name="productName[<%= i %>]" value="<%= product[i].name %>">
+      
             <label for="price<%= i %>" required><%= product[i].price %></label>
-            <input type="hidden" id="productPrice<%= i %>" name="productPrice" value="<%= product[i].price %>">
-            <input type="hidden" id="numProduct" name="numProduct" value="<%= i %>">
-            <input type="submit" id='submit' value='Ajouter'>
+            <input type="hidden" id="productPrice<%= i %>" name="productPrice[<%= i %>]" value="<%= product[i].price %>">
+            <input type="button" class='button' data-num="<%= i %>" value="purchase">
           </div>
         <% } %>
       </div>
+      <input type="hidden" id="numProduct" name="numProduct">
     </form>
+
+    <script>
+      const buttons = document.querySelectorAll('.submit');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const num = button.dataset.num;
+          const price = document.getElementById(`productPrice${num}`).value;
+          const name = document.getElementById(`productName${num}`).value;
+          document.getElementById('numProduct').value = num;
+          document.forms[0].submit();
+        });
+      });
+    </script>
     
   <footer>
     <%- include('../partials/footer'); %>

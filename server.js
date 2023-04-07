@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { response } from 'express';
 import session from 'express-session'
 import mysql from 'mysql2'
 import bodyParser from 'body-parser';
@@ -6,12 +6,11 @@ const app = express()
 const port = 3000
 
 // paramètres cookie express session
-app.set('trust proxy', 1) // trust first proxy
+
 app.use(session({
   secret: 'cat',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }
 }))
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -46,26 +45,56 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
- 
-  const num = req.body.numProduct
-  const price = req.body.productPrice
-  const name = req.body.productName
-
-connection.query('INSERT INTO orders (id, price, name) SELECT ?,?, ? FROM product', [num, price, name], (err, result) => {
-if (err) {
-  console.error(err)
-}
-res.status(200).json({ message: 'Valeurs ajoutées avec succès' });
-
+  const num = req.body.numProduct;
+  const price = req.body.productPrice[num];
+  const name = req.body.productName[num];
+  console.log(num);
+  console.log(name);
+  console.log(price);
+  connection.query('INSERT INTO orders (id, idProduct, price, name) VALUES (NULL, ?, ?, ?)', [num, price, name], (err, result) => {
+    if (err) {
+      console.error(err)
+    }
+    connection.query('SELECT * FROM `orders`', (err, result, fields) => {
+      console.log(result)
+      res.render('pages/panier', { orders: result })
+  });
 });
- 
-});
+})
 
 //page connexion
 app.get('/connexion', (req, res) => {
-  res.render('pages/connexion+inscription/connexion')
-}
-)
+  res.render('pages/connexion+inscription/connexion', {
+    layout:false,
+    session: req.session
+})
+})
+
+// connexion user
+app.post('/connexion', (req, res) => {
+  console.log(req.body);
+  
+  const username = req.body.username;
+  const password = req.body.password;
+
+  if (username && password) {
+    connection.query('SELECT * FROM users WHERE username = ? AND password=? ', [username, password], (err, rows) => {
+      if (users.length > 0) {
+        
+res.send("bienvenue")
+           // connection.query('SELECT * FROM `product`', (err, result, fields) => {
+           //   console.log(result);
+            //  res.render('pages/index', { product: result });
+          //  });
+          
+  } else {
+    res.send('Veuillez entrer votre username et mot de passe');
+      }
+})};
+});
+
+
+//page inscription
 
 app.post('/inscription', (req, res) => {
   console.log(req.body)
@@ -111,6 +140,8 @@ app.get('/inscription', (req, res) => {
 }
 )
 
+
+
 //page panier
 app.get('/panier', (req, res) => {
   connection.query('SELECT * FROM `orders`', (err, result, fields) => {
@@ -126,14 +157,7 @@ app.get('/chat', (req, res) => {
 }
 )
 
-//affiche la page produit
-app.get('/produits', (req, res) => {
-  connection.query('SELECT * FROM `product`', (err, result, fields) => {
-    console.log(result)
-    res.render('pages/ficheProduit', { product: result })
-  })
 
-})
 
 
 
