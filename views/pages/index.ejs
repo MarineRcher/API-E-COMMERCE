@@ -18,10 +18,7 @@
       <li class="lien"><a href="#"><strong>Chiens</strong></a>
        
       </li>
-      <li class="lien"><a href="#"><strong>Autres</strong></a>
-     
-      </li>
-      <li class="lien"><a href="#"><strong>Bons Plans</strong></a></li>
+    
     </ul>
   </nav>
 
@@ -30,31 +27,27 @@
     <img class="imageAcceuilChienChat" src="../img/acceuil/acceuilChien&Chat.jpg" alt="lala">
   </div>
 
-  <div class="newProducts">
-    <h1>Nouveaux Produits : </h1>
-  </div>
-  <form action="/" method="POST">
-  <div class="boxNewProducts">
-    <% for (var i=0; i < product.length; i++) { %>
-      <div class="newProduct1">
-        <img class="croquettes" src="<%= product[i].image %>">
-        <a href="/produits">
-          <label name="name" required value="<%= product[i].name %>"><%= product[i].name %>  </a> </label>
-
-          <label name="price" required value="<%= product[i].price %>"><%= product[i].price %>  </label>
-
-          <input type="hidden" id="productName<%= i %>" name="productName" value="<%= product[i].name %>">
-          <input type="hidden" id="productPrice<%= i %>" name="productPrice" value="<%= product[i].price %>">
-          <input type="hidden" id="numProduct" name="numProduct" value="<%= i %>">
-          
-        <input type="submit" id='submit' value='Ajouter' >
+    <div class="newProducts">
+      <h1>Nouveaux Produits : </h1>
+    </div>
+    <form action="/" method="POST">
+      <div class="boxNewProducts">
+        <% for (var i=0; i < product.length; i++) { %>
+          <div class="newProduct1">
+            <img class="croquettes" src="<%= product[i].image %>">
+            <a href="/produits">
+              <label for="name<%= i %>" required><%= product[i].name %></label>
+              <input type="hidden" id="productName<%= i %>" name="productName" value="<%= product[i].name %>">
+            </a>
+            <label for="price<%= i %>" required><%= product[i].price %></label>
+            <input type="hidden" id="productPrice<%= i %>" name="productPrice" value="<%= product[i].price %>">
+            <input type="hidden" id="numProduct" name="numProduct" value="<%= i %>">
+            <input type="submit" id='submit' value='Ajouter'>
+          </div>
+        <% } %>
       </div>
-    <% } %>
-  </form>
-  </div>
-
-
-
+    </form>
+    
   <footer>
     <%- include('../partials/footer'); %>
   </footer>

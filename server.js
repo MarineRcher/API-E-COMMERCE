@@ -1,10 +1,20 @@
 import express from 'express';
+import session from 'express-session'
 import mysql from 'mysql2'
 import bodyParser from 'body-parser';
 const app = express()
 const port = 3000
 
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'cat',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: true }
+}))
+
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
@@ -34,30 +44,20 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  console.log("requete post")
-  console.log(req.body.numProduct)
-  const num = req.body.numProduct
-  const name = req.body.productName
-  const price = req.body.productPrice
-
-  console.log(name)
-  console.log(price)
-  console.log(num)
-  connection.execute('INSERT INTO orders (name, price) VALUES (name=?, price=?)', [name, price], (err, rows) => {
-
-  console.log('SQL errors', err)
-    console.log(rows)
-
-    connection.query('SELECT * FROM `product`', (err, result, fields) => {
-      console.log(result)
-      res.render('pages/index', { product: result })
-    })
-  
-   
-  });
-
  
-})
+  const num = req.body.numProduct
+  const price = req.body.productPrice
+  const name = req.body.productName
+
+connection.query('INSERT INTO orders (id, price, name) SELECT ?,?, ? FROM product', [num, price, name], (err, result) => {
+if (err) {
+  console.error(err)
+}
+res.status(200).json({ message: 'Valeurs ajoutées avec succès' });
+
+});
+ 
+});
 
 //page connexion
 app.get('/connexion', (req, res) => {
