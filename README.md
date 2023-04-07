@@ -26,6 +26,10 @@ Logiciels à installer :
 - Docker
 - node JS
 
+Installer modules nodes :
+```
+npm install
+```
 
 Installer nodemon:
 ```

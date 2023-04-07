@@ -10,7 +10,7 @@ app.use(session({
   secret: 'cat',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: true }
+  cookie: { secure: false }
 }))
 
 app.use(bodyParser.urlencoded({extended:true}));
